@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Scheduler-Consumer" />
+        <module name="Scheduler-Eureka" />
+        <module name="Scheduler-Config" />
+        <module name="Scheduler-Zuul" />
+        <module name="Scheduler-Producer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="scheduler" target="8" />
+      <module name="Scheduler-Config" target="8" />
+      <module name="Scheduler-Consumer" target="8" />
+      <module name="Scheduler-Eureka" target="8" />
+      <module name="Scheduler-Producer" target="8" />
+      <module name="Scheduler-Zuul" target="8" />
+      <module name="SpringCloud-Client-Consumer" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Scheduler-Config" options="-parameters" />
+      <module name="Scheduler-Consumer" options="-parameters" />
+      <module name="Scheduler-Eureka" options="-parameters" />
+      <module name="Scheduler-Producer" options="-parameters" />
+      <module name="Scheduler-Zuul" options="-parameters" />
+      <module name="SpringCloud-Client-Consumer" options="-parameters" />
+      <module name="scheduler" options="-parameters" />
+    </option>
+  </component>
+</project>

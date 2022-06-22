@@ -1,0 +1,13 @@
+server:
+  port: 8704
+spring:
+  application:
+    name: scheduler-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8701/eureka/
+zuul:
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000

@@ -1,0 +1,6 @@
+org.springframework.boot.env.PropertySourceLoader= com.springcloudconfig.springcloudconfig.handle.MyPropertiesHandler
+#解决http响应数据中文乱码问题
+spring.http.encoding.force=true
+spring.http.encoding.charset=UTF-8
+spring.http.encoding.enabled=true
+server.tomcat.uri-encoding=UTF-8

@@ -1,0 +1,16 @@
+server:
+  port: 8701
+spring:
+  application:
+    name: eureka-serve
+eureka:
+  server:
+    #防止由于Eureka的机制导致Client被错误显示在线，仅在开发环境使用，生产环境需缓存此信息，防止因网络波动导致服务频繁上下线。
+    enable-self-preservation: false
+  client:
+    #不向注册中心注册自己
+    register-with-eureka: false
+    fetch-registry: false
+    #此eureka server的应用注册地址
+    service-url:
+      defaultZone: http://localhost:8701/eureka/

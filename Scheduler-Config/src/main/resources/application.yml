@@ -1,0 +1,19 @@
+server:
+  port: 8702
+spring:
+  application:
+    name: scheduler-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Smallplain/springcloud-config # git仓库的地址
+          search-paths: config  # git仓库地址下的相对地址，可以配置多个，用,分割。
+          username: fei1007026577@qq.com
+          password: xiaofeiji221.
+          default-label: main
+#解决中文乱码问题以及配置问题参考：https://www.cnblogs.com/huanzi-qch/p/10149547.html
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8701/eureka/

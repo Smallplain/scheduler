@@ -1,59 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.1.6.RELEASE</version>
+        <relativePath/>
     </parent>
-    <groupId>com.xfj</groupId>
-    <artifactId>scheduler</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>scheduler</name>
-    <description>Demo project for Spring Boot</description>
+
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <groupId>org.cloud</groupId>
+    <artifactId>SpringCloud</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>Scheduler-Consumer</module>
+        <module>Scheduler-Producer</module>
+        <module>Scheduler-Config</module>
+        <module>Scheduler-Eureka</module>
+        <module>Scheduler-Zuul</module>
+    </modules>
+
     <properties>
-        <java.version>1.8</java.version>
+        <org.projectlombok>1.18.8</org.projectlombok>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <spring-boot.maven>2.5.2</spring-boot.maven>
+        <spring-cloud.config>2.1.1.RELEASE</spring-cloud.config>
+        <spring-cloud.actuator>2.1.1.RELEASE</spring-cloud.actuator>
+        <spring-cloud.starter.config>2.1.1.RELEASE</spring-cloud.starter.config>
+        <spring-cloud.eureka.client>2.1.1.RELEASE</spring-cloud.eureka.client>
+        <spring-cloud.hystrix.openfeign>2.1.1.RELEASE</spring-cloud.hystrix.openfeign>
+        <spring-cloud.hystrix.version>2.1.1.RELEASE</spring-cloud.hystrix.version>
+        <spring-cloud.netflix.zuul>2.1.1.RELEASE</spring-cloud.netflix.zuul>
+        <spring-boot-starter-mail>2.6.3</spring-boot-starter-mail>
+        <spring-boot-starter-test>2.1.6.RELEASE</spring-boot-starter-test>
+        <com.alibaba.fafastjson>1.2.75</com.alibaba.fafastjson>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <!--这里是声明依赖，并不实现引入，如果不在子项目中声明依赖，是不会从父项目中继承下来的；
+    只有在子项目中写了该依赖项，并且没有指定具体版本，才会从父项目中继承该项，
 
+    并且version和scope都读取自父pom;另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本。-->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 支持lombok-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${org.projectlombok}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-config-server</artifactId>
+                <version>${spring-cloud.config}</version>
+            </dependency>
+            <!--客户端自动刷新GIT配置文件，spring-boot-starter-actuator 是一套监控的功能，可以监控程序在运行时状态，其中就包括/refresh的功能。-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+                <version>${spring-cloud.actuator}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${spring-cloud.eureka.client}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud.hystrix.openfeign}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+                <version>${spring-cloud.hystrix.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-config</artifactId>
+                <version>${spring-cloud.starter.config}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+                <version>${spring-cloud.netflix.zuul}</version>
+            </dependency>
+            <!-- 支持发送邮件 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-mail</artifactId>
+                <version>${spring-boot-starter-mail}</version>
+            </dependency>
+            <!-- 支持test组件 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-starter-test}</version>
+            </dependency>
+            <!--Json转对象，list，map-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${com.alibaba.fafastjson}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
+                <version>${spring-boot.maven}</version>
             </plugin>
         </plugins>
     </build>
-
 </project>
