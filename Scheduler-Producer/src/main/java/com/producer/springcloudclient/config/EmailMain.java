@@ -1,5 +1,5 @@
-package com.producer.springcloudclient.config.mainconfig;
-public class EmailMainConfig {
+package com.producer.springcloudclient.config;
+public class EmailMain {
     private String type;
 
     private String host;

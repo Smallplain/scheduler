@@ -4,8 +4,6 @@ import com.producer.springcloudclient.manager.EmailManager;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -24,6 +22,10 @@ public class SendEmailServiceImpl implements SendEmailService{
         try {
             EmailManager singleInstance = EmailManager.getSingleInstance();
             JavaMailSenderImpl sender = singleInstance.getMimeMessages(emailType);
+            if (sender == null) {
+                logger.error(String.format("未配置对应类型的邮件系统！"));
+                return false;
+            }
             MimeMessage mimeMessage = sender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
             mimeMessageHelper.setFrom(Objects.requireNonNull(sender.getUsername()));    // 设置发件人

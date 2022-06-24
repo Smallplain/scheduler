@@ -18,11 +18,11 @@
     <dependencies>
 
         <!--自身项目依赖包 开始-->
-        <dependency>
-            <groupId>com.springcloudconfig</groupId>
-            <artifactId>Scheduler-Config</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>     //不可再次依赖config，config已经作为一个单独的服务初始化过了，再次依赖会导致之前初始化变为空，我的理解是这样-->
+<!--            <groupId>com.springcloudconfig</groupId>-->
+<!--            <artifactId>Scheduler-Config</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
         <!--自身项目依赖包 结束-->
 
         <dependency>
