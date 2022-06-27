@@ -21,6 +21,7 @@
         <module>Scheduler-Config</module>
         <module>Scheduler-Eureka</module>
         <module>Scheduler-Zuul</module>
+        <module>Scheduler-Model</module>
     </modules>
 
     <properties>
@@ -39,6 +40,7 @@
         <spring-boot-starter-mail>2.6.3</spring-boot-starter-mail>
         <spring-boot-starter-test>2.1.6.RELEASE</spring-boot-starter-test>
         <com.alibaba.fafastjson>1.2.75</com.alibaba.fafastjson>
+        <org.mybatis.spring.boot>2.0.1</org.mybatis.spring.boot>
     </properties>
 
     <!--这里是声明依赖，并不实现引入，如果不在子项目中声明依赖，是不会从父项目中继承下来的；
@@ -47,6 +49,12 @@
     并且version和scope都读取自父pom;另外如果子项目中指定了版本号，那么会使用子项目中指定的jar版本。-->
     <dependencyManagement>
         <dependencies>
+            <!-- 支持mybatis-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${org.mybatis.spring.boot}</version>
+            </dependency>
             <!-- 支持lombok-->
             <dependency>
                 <groupId>org.projectlombok</groupId>

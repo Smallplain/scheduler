@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Scheduler-Consumer" />
+        <module name="Scheduler-Model" />
         <module name="Scheduler-Eureka" />
         <module name="Scheduler-Config" />
         <module name="Scheduler-Zuul" />
@@ -19,6 +20,7 @@
       <module name="Scheduler-Config" target="8" />
       <module name="Scheduler-Consumer" target="8" />
       <module name="Scheduler-Eureka" target="8" />
+      <module name="Scheduler-Model" target="8" />
       <module name="Scheduler-Producer" target="8" />
       <module name="Scheduler-Zuul" target="8" />
       <module name="SpringCloud-Client-Consumer" target="8" />
@@ -29,6 +31,7 @@
       <module name="Scheduler-Config" options="-parameters" />
       <module name="Scheduler-Consumer" options="-parameters" />
       <module name="Scheduler-Eureka" options="-parameters" />
+      <module name="Scheduler-Model" options="-parameters" />
       <module name="Scheduler-Producer" options="-parameters" />
       <module name="Scheduler-Zuul" options="-parameters" />
       <module name="SpringCloud-Client-Consumer" options="-parameters" />

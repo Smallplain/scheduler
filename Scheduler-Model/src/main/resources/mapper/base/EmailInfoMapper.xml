@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.schedulermodel.dao.EmailInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.schedulermodel.model.EmailInfo" >
+    <id column="email_id" property="emailId" jdbcType="INTEGER" />
+    <result column="email_type" property="emailType" jdbcType="VARCHAR" />
+    <result column="email_name" property="emailName" jdbcType="VARCHAR" />
+    <result column="email_content" property="emailContent" jdbcType="VARCHAR" />
+    <result column="emai_title" property="emaiTitle" jdbcType="VARCHAR" />
+    <result column="sender_id" property="senderId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+    <result column="email_send_time" property="emailSendTime" jdbcType="TIMESTAMP" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    email_id, email_type, email_name, email_content, emai_title, sender_id, status, is_deleted, 
+    email_send_time, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from email_info
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from email_info
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.schedulermodel.model.EmailInfo" >
+    insert into email_info (email_id, email_type, email_name, 
+      email_content, emai_title, sender_id, 
+      status, is_deleted, email_send_time, 
+      gmt_create, gmt_modified)
+    values (#{emailId,jdbcType=INTEGER}, #{emailType,jdbcType=VARCHAR}, #{emailName,jdbcType=VARCHAR}, 
+      #{emailContent,jdbcType=VARCHAR}, #{emaiTitle,jdbcType=VARCHAR}, #{senderId,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, #{emailSendTime,jdbcType=TIMESTAMP}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.schedulermodel.model.EmailInfo" >
+    insert into email_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="emailId != null" >
+        email_id,
+      </if>
+      <if test="emailType != null" >
+        email_type,
+      </if>
+      <if test="emailName != null" >
+        email_name,
+      </if>
+      <if test="emailContent != null" >
+        email_content,
+      </if>
+      <if test="emaiTitle != null" >
+        emai_title,
+      </if>
+      <if test="senderId != null" >
+        sender_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="emailSendTime != null" >
+        email_send_time,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="emailId != null" >
+        #{emailId,jdbcType=INTEGER},
+      </if>
+      <if test="emailType != null" >
+        #{emailType,jdbcType=VARCHAR},
+      </if>
+      <if test="emailName != null" >
+        #{emailName,jdbcType=VARCHAR},
+      </if>
+      <if test="emailContent != null" >
+        #{emailContent,jdbcType=VARCHAR},
+      </if>
+      <if test="emaiTitle != null" >
+        #{emaiTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="senderId != null" >
+        #{senderId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="emailSendTime != null" >
+        #{emailSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.schedulermodel.model.EmailInfo" >
+    update email_info
+    <set >
+      <if test="emailType != null" >
+        email_type = #{emailType,jdbcType=VARCHAR},
+      </if>
+      <if test="emailName != null" >
+        email_name = #{emailName,jdbcType=VARCHAR},
+      </if>
+      <if test="emailContent != null" >
+        email_content = #{emailContent,jdbcType=VARCHAR},
+      </if>
+      <if test="emaiTitle != null" >
+        emai_title = #{emaiTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="senderId != null" >
+        sender_id = #{senderId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="emailSendTime != null" >
+        email_send_time = #{emailSendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.schedulermodel.model.EmailInfo" >
+    update email_info
+    set email_type = #{emailType,jdbcType=VARCHAR},
+      email_name = #{emailName,jdbcType=VARCHAR},
+      email_content = #{emailContent,jdbcType=VARCHAR},
+      emai_title = #{emaiTitle,jdbcType=VARCHAR},
+      sender_id = #{senderId,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      email_send_time = #{emailSendTime,jdbcType=TIMESTAMP},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where email_id = #{emailId,jdbcType=INTEGER}
+  </update>
+</mapper>
