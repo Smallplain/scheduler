@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Objects;
 
@@ -37,17 +39,19 @@ public class SendEmailServiceImpl implements SendEmailService {
                 return false;
             }
             MimeMessage mimeMessage = sender.createMimeMessage();
-            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
+            //这里，在创建对象的时候定义编码格式(utf-8)：
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, "utf-8");
             mimeMessageHelper.setFrom(Objects.requireNonNull(sender.getUsername()));    // 设置发件人
-            mimeMessageHelper.setTo(toPeopleName);  // 设置收件人
-            mimeMessageHelper.setSubject(mailTitle);    // 设置主题/标题
-            mimeMessageHelper.setText(content,true);     // 设置内容.true:支持html格式
+            mimeMessageHelper.setTo(toPeopleName);             // 设置收件人
+            mimeMessageHelper.setSubject(mailTitle);           // 设置主题/标题
+            mimeMessageHelper.setText(content,true);      // 设置内容.true:支持html格式
+//            mimeMessageHelper.addAttachment(MimeUtility.encodeWord("附件名","utf-8","B"), 你的附件对象);                //  其次，在添加附件的时候，附件名是需要定义编码的
 
             EmailInfo emailInfo =new EmailInfo();
-            emailInfo.setEmailContent(content.toString());
+            emailInfo.setEmaiTitle(mailTitle);
+            emailInfo.setEmailContent(content);
             emailInfo.setEmailType(emailType);
             emailInfo.setGmtCreate(new Date());
-            emailInfo.setEmaiTitle(mailTitle);
             emailInfo.setStatus(0);//发送中
             emailInfoMapper.insertSelective(emailInfo);
             //设置邮件发送状态为发送中
@@ -56,23 +60,21 @@ public class SendEmailServiceImpl implements SendEmailService {
                 public void run() {
                     try {
                         sender.send(mimeMessageHelper.getMimeMessage());    // 发送邮件
+                        //设置邮件发送状态为发送成功
+                        logger.info("邮件发送成功...");
+                        emailInfo.setStatus(1);//发送成功
+                        emailInfoMapper.updateByPrimaryKeySelective(emailInfo);
                     } catch (MailException e) {
                         e.printStackTrace();
                         logger.error(String.format("邮件发送 失败 e:{%s}", e));
                         emailInfo.setStatus(2);//发送失败
                         emailInfoMapper.updateByPrimaryKeySelective(emailInfo);
-                        //设置邮件发送失败
-                        return;
                     }
 
                 }
             });
-            //设置邮件发送状态为发送成功
-            logger.info("邮件发送成功...");
-            emailInfo.setStatus(1);//发送成功
-            emailInfoMapper.updateByPrimaryKeySelective(emailInfo);
             return true;
-        } catch (MessagingException e) {
+        } catch (Exception e) {
             //设置邮件发送状态为发送失败
             logger.error(String.format("邮件发送 失败 e:{%s}", e));
             return false;

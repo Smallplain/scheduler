@@ -1,7 +1,9 @@
 package com.schedulermodel.dao;
 
 import com.schedulermodel.model.UserInfo;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface UserInfoMapper {
     int deleteByPrimaryKey(Integer userId);
 

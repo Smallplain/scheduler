@@ -8,7 +8,7 @@
     <result column="email_content" property="emailContent" jdbcType="VARCHAR" />
     <result column="emai_title" property="emaiTitle" jdbcType="VARCHAR" />
     <result column="sender_id" property="senderId" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
     <result column="email_send_time" property="emailSendTime" jdbcType="TIMESTAMP" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
@@ -29,21 +29,24 @@
     where email_id = #{emailId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.schedulermodel.model.EmailInfo" >
-    insert into email_info (email_id, email_type, email_name, 
-      email_content, emai_title, sender_id, 
-      status, is_deleted, email_send_time, 
-      gmt_create, gmt_modified)
-    values (#{emailId,jdbcType=INTEGER}, #{emailType,jdbcType=VARCHAR}, #{emailName,jdbcType=VARCHAR}, 
-      #{emailContent,jdbcType=VARCHAR}, #{emaiTitle,jdbcType=VARCHAR}, #{senderId,jdbcType=INTEGER}, 
-      #{status,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, #{emailSendTime,jdbcType=TIMESTAMP}, 
-      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+    <selectKey resultType="java.lang.Integer" keyProperty="emailId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into email_info (email_type, email_name, email_content, 
+      emai_title, sender_id, status, 
+      is_deleted, email_send_time, gmt_create, 
+      gmt_modified)
+    values (#{emailType,jdbcType=VARCHAR}, #{emailName,jdbcType=VARCHAR}, #{emailContent,jdbcType=VARCHAR}, 
+      #{emaiTitle,jdbcType=VARCHAR}, #{senderId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{isDeleted,jdbcType=TINYINT}, #{emailSendTime,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.schedulermodel.model.EmailInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="emailId" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into email_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="emailId != null" >
-        email_id,
-      </if>
       <if test="emailType != null" >
         email_type,
       </if>
@@ -76,9 +79,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="emailId != null" >
-        #{emailId,jdbcType=INTEGER},
-      </if>
       <if test="emailType != null" >
         #{emailType,jdbcType=VARCHAR},
       </if>
@@ -95,7 +95,7 @@
         #{senderId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=TINYINT},
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="isDeleted != null" >
         #{isDeleted,jdbcType=TINYINT},
@@ -130,7 +130,7 @@
         sender_id = #{senderId,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="isDeleted != null" >
         is_deleted = #{isDeleted,jdbcType=TINYINT},
@@ -154,7 +154,7 @@
       email_content = #{emailContent,jdbcType=VARCHAR},
       emai_title = #{emaiTitle,jdbcType=VARCHAR},
       sender_id = #{senderId,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT},
+      status = #{status,jdbcType=INTEGER},
       is_deleted = #{isDeleted,jdbcType=TINYINT},
       email_send_time = #{emailSendTime,jdbcType=TIMESTAMP},
       gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},

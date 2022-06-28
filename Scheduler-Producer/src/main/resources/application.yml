@@ -8,7 +8,7 @@ spring:
     username: root
     password: Xfj9527@.
     url: jdbc:mysql://139.224.36.30:3306/scheduler_email?useUnicode=true&characterEncoding=utf8&useCursorFetch=true&autoReconnect=true&failOverReadOnly=false&useSSL=false
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 eureka:
   client:
     service-url:
@@ -19,6 +19,10 @@ mybatis:
   type-aliases-package: com.producer.cloud.model
   # 数据库映射配置文件路径
   mapper-locations: classpath:mapper/*Mapper.xml,classpath:mapper/base/*Mapper.xml
-##日志管理
-
+##日志管理  上下两个均可用
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#logging:
+#  level:
+#    com.schedulermodel.dao: DEBUG
 
