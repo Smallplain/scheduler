@@ -24,8 +24,20 @@
         <!--            <version>0.0.1-SNAPSHOT</version>-->
         <!--        </dependency>-->
         <!--自身项目依赖包 结束-->
-
-
+        <dependency>
+            <groupId>com.springcloudcommon</groupId>
+            <artifactId>Scheduler-Common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- 引入swagger相关的jar -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

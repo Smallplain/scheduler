@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.schedulermodel.dao.EmailInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.schedulermodel.model.EmailInfo" >
+<mapper namespace="com.schedulercommon.dao.EmailInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.schedulercommon.model.EmailInfo" >
     <id column="email_id" property="emailId" jdbcType="INTEGER" />
     <result column="email_type" property="emailType" jdbcType="VARCHAR" />
     <result column="email_name" property="emailName" jdbcType="VARCHAR" />
@@ -28,7 +28,7 @@
     delete from email_info
     where email_id = #{emailId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.schedulermodel.model.EmailInfo" >
+  <insert id="insert" parameterType="com.schedulercommon.model.EmailInfo" >
     <selectKey resultType="java.lang.Integer" keyProperty="emailId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -41,7 +41,7 @@
       #{isDeleted,jdbcType=TINYINT}, #{emailSendTime,jdbcType=TIMESTAMP}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.schedulermodel.model.EmailInfo" >
+  <insert id="insertSelective" parameterType="com.schedulercommon.model.EmailInfo" >
     <selectKey resultType="java.lang.Integer" keyProperty="emailId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.schedulermodel.model.EmailInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.schedulercommon.model.EmailInfo" >
     update email_info
     <set >
       <if test="emailType != null" >
@@ -147,7 +147,7 @@
     </set>
     where email_id = #{emailId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.schedulermodel.model.EmailInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.schedulercommon.model.EmailInfo" >
     update email_info
     set email_type = #{emailType,jdbcType=VARCHAR},
       email_name = #{emailName,jdbcType=VARCHAR},

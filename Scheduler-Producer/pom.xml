@@ -24,13 +24,20 @@
 <!--            <version>0.0.1-SNAPSHOT</version>-->
 <!--        </dependency>-->
         <!--自身项目依赖包 结束-->
-
         <dependency>
-            <groupId>com.springcloudmodel</groupId>
-            <artifactId>Scheduler-Model</artifactId>
+            <groupId>com.springcloudcommon</groupId>
+            <artifactId>Scheduler-Common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
+        <!-- 引入swagger相关的jar -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
         <!-- 支持mybatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

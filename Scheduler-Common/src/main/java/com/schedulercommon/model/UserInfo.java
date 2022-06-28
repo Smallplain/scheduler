@@ -1,4 +1,4 @@
-package com.schedulermodel.model;
+package com.schedulercommon.model;
 
 import java.util.Date;
 

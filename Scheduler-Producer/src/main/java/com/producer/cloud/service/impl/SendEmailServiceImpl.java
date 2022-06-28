@@ -3,8 +3,8 @@ package com.producer.cloud.service.impl;
 import com.producer.cloud.config.thread.ThreadPoolGroup;
 import com.producer.cloud.config.manager.EmailManager;
 import com.producer.cloud.service.SendEmailService;
-import com.schedulermodel.dao.EmailInfoMapper;
-import com.schedulermodel.model.EmailInfo;
+import com.schedulercommon.dao.EmailInfoMapper;
+import com.schedulercommon.model.EmailInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +14,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeUtility;
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Objects;
 

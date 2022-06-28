@@ -22,7 +22,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成模型的包名和位置-->
-        <javaModelGenerator targetPackage="com.schedulermodel.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.schedulercommon.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -31,13 +31,13 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.schedulermodel.dao" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.schedulercommon.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table  tableName="user_info" domainObjectName="UserInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table  tableName="email_info" domainObjectName="EmailInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <!-- 生成insert语句时，反回到实体类内主键id-->
-            <generatedKey column="user_id" sqlStatement="MySql" identity="true"/>
+            <generatedKey column="email_id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>

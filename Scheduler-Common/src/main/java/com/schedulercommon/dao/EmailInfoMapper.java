@@ -1,6 +1,6 @@
-package com.schedulermodel.dao;
+package com.schedulercommon.dao;
 
-import com.schedulermodel.model.EmailInfo;
+import com.schedulercommon.model.EmailInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
