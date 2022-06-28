@@ -19,9 +19,10 @@
         <module>Scheduler-Eureka</module>
         <module>Scheduler-Config</module>
         <module>Scheduler-Common</module>
+        <module>Scheduler-Model</module>
         <module>Scheduler-Zuul</module>
-        <module>Scheduler-Consumer</module>
-        <module>Scheduler-Producer</module>
+        <module>Scheduler-Api</module>
+        <module>Scheduler-Business</module>
     </modules>
 
     <properties>

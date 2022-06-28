@@ -7,32 +7,35 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Scheduler-Consumer" />
+        <module name="Scheduler-Model" />
         <module name="Scheduler-Eureka" />
-        <module name="Scheduler-Config" />
+        <module name="Scheduler-Api" />
         <module name="Scheduler-Common" />
         <module name="Scheduler-Zuul" />
-        <module name="Scheduler-Producer" />
+        <module name="Scheduler-Config" />
+        <module name="Scheduler-Business" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="scheduler" target="8" />
+      <module name="Scheduler-Api" target="8" />
+      <module name="Scheduler-Business" target="8" />
       <module name="Scheduler-Common" target="8" />
       <module name="Scheduler-Config" target="8" />
-      <module name="Scheduler-Consumer" target="8" />
       <module name="Scheduler-Eureka" target="8" />
-      <module name="Scheduler-Producer" target="8" />
+      <module name="Scheduler-Model" target="8" />
       <module name="Scheduler-Zuul" target="8" />
       <module name="SpringCloud-Client-Consumer" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Scheduler-Api" options="-parameters" />
+      <module name="Scheduler-Business" options="-parameters" />
       <module name="Scheduler-Common" options="-parameters" />
       <module name="Scheduler-Config" options="-parameters" />
-      <module name="Scheduler-Consumer" options="-parameters" />
       <module name="Scheduler-Eureka" options="-parameters" />
-      <module name="Scheduler-Producer" options="-parameters" />
+      <module name="Scheduler-Model" options="-parameters" />
       <module name="Scheduler-Zuul" options="-parameters" />
       <module name="SpringCloud-Client-Consumer" options="-parameters" />
       <module name="scheduler" options="-parameters" />

@@ -1,0 +1,28 @@
+server:
+  port: 8711
+spring:
+  application:
+    name: scheduler-api
+#数据库连接信息
+  datasource:
+    username: root
+    password: Xfj9527@.
+    url: jdbc:mysql://139.224.36.30:3306/scheduler_email?useUnicode=true&characterEncoding=utf8&useCursorFetch=true&autoReconnect=true&failOverReadOnly=false&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8701/eureka/
+# mybatis设置
+mybatis:
+  # 数据库实体类映射位置
+  type-aliases-package: com.scheduler.model.model
+  # 数据库映射配置文件路径
+  mapper-locations: classpath:mapper/*Mapper.xml,classpath:mapper/base/*Mapper.xml
+##日志管理---------
+logging:
+  level:
+    com.scheduler.model.dao: DEBUG
+#  config: classpath:logback-boot.xml
+
+
