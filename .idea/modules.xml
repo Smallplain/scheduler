@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Scheduler-Consumer/Scheduler-Api.iml" filepath="$PROJECT_DIR$/Scheduler-Consumer/Scheduler-Api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Scheduler-Producer/Scheduler-Business.iml" filepath="$PROJECT_DIR$/Scheduler-Producer/Scheduler-Business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Scheduler-Api/Scheduler-Api.iml" filepath="$PROJECT_DIR$/Scheduler-Api/Scheduler-Api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Scheduler-Business/Scheduler-Business.iml" filepath="$PROJECT_DIR$/Scheduler-Business/Scheduler-Business.iml" />
       <module fileurl="file://$PROJECT_DIR$/Scheduler-Common/Scheduler-Common.iml" filepath="$PROJECT_DIR$/Scheduler-Common/Scheduler-Common.iml" />
       <module fileurl="file://$PROJECT_DIR$/Scheduler-Config/Scheduler-Config.iml" filepath="$PROJECT_DIR$/Scheduler-Config/Scheduler-Config.iml" />
       <module fileurl="file://$PROJECT_DIR$/Scheduler-Eureka/Scheduler-Eureka.iml" filepath="$PROJECT_DIR$/Scheduler-Eureka/Scheduler-Eureka.iml" />

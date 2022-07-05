@@ -1,17 +1,15 @@
-package com.springcloudconfig.springcloudconfig;
+package com.scheduler.zuul;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
-@EnableConfigServer
+@EnableZuulProxy
 @EnableEurekaClient
-public class SpringCloudConfigApplication {
-
+public class SchedulerZuulApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringCloudConfigApplication.class, args);
+        SpringApplication.run(SchedulerZuulApplication.class, args);
     }
-
 }
